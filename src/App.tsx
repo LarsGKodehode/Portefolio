@@ -4,39 +4,28 @@ import './App.css';
 import {
   Link, Outlet,
 } from 'react-router-dom';
+import Navbar, { NavbarProps } from './components/Navbar/Navbar';
+
+
 
 
 // Component
 function App() {
+
+  const navbarProps: NavbarProps = {
+    pagesProps: [
+      {path: 'home', text:'Home'},
+      {path: 'projects', text:'Projects'},
+      {path: 'contact', text:'Contact'},
+    ],
+  };
+
   return (
     <div className='App'>
-      <nav>
-      <Link
-        style={{margin: '2em'}}
-        to='home'
-      >
-        Home
-      </Link>
-
-      <Link
-        style={{margin: '2em'}}
-        to='projects'
-      >
-        Projects
-      </Link>
-
-      <Link
-        style={{margin: '2em'}}
-        to='contact'
-      >
-        Contact
-      </Link>
-      </nav>
-
-      <div>
+      <Navbar {...navbarProps} />
+      <main>
         <Outlet />
-      </div>
-
+      </main>
     </div>
   );
 };
