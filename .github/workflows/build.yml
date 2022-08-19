@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: Install yarn
-        run: npm ci -g yarn
+        run: npm install -g yarn
 
       - name: Build
         run: yarn build
