@@ -1,0 +1,35 @@
+# This workflow wild do create a clean install of node dependencies and build the project into branch gh-pages
+name: Page-Build
+
+on:
+  push:
+    branches: [ "main" ]
+    pull_request: [ "main" ]
+
+jobs:
+  build:
+
+    # Specify OS to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Use Node varsion
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+
+      - name: Install yarn
+        run: npm ci -g yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./release
