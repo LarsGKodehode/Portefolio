@@ -1,2 +1,23 @@
 #root {
+  /* shape */
+  width: 100%;
+  min-height: 100%;
+}
+
+#root > .App {
+  /* Shape */
+  width: 100%;
+  min-height: 100%;
+  padding: 1em 8em;
+
+  /* Color */
+  background-color: rgb(66, 7, 49);
+}
+
+a {
+  color: inherit;
+}
+
+.hoverFeedback:hover {
+  background-color: black;
 }
