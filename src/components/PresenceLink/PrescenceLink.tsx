@@ -22,11 +22,18 @@ function PresenceLink(props: PresenceLinkProps) {
     style: linkStyle,
   };
 
+  const imageStyle: React.CSSProperties = {
+    width: '80%',
+  };
+
 
   return(
     <a {...linkProps} >
       { logoPath ?
-        <img src={logoPath} /> :
+        <img
+          src={logoPath}
+          style={imageStyle}
+        /> :
         name
       }
     </a>
