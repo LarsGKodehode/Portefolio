@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Types
-import { StyledLinkProps } from '../Navbar/navbar.d'
+import { StyledLinkProps } from '../Navbar/navbar.d';
 
 // Component
 function StyledLink(props: StyledLinkProps) {
@@ -24,7 +24,7 @@ function StyledLink(props: StyledLinkProps) {
   const handlers = {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
-  }
+  };
   const styling: React.CSSProperties = {
     margin: '1em',
     backgroundColor: isHover ? 'black' : 'purple',
@@ -37,7 +37,6 @@ function StyledLink(props: StyledLinkProps) {
   const linkProps = {
     style: styling,
     to: path,
-    className: 'hoverFeedback',
     ...handlers,
   };
 
@@ -49,7 +48,3 @@ function StyledLink(props: StyledLinkProps) {
 };
 
 export default StyledLink;
-
-export type {
-  StyledLinkProps,
-};
