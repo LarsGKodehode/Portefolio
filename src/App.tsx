@@ -18,8 +18,10 @@ function App() {
     position: 'fixed',
     top: '0px',
     left: '0px',
+    height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: 'rgb(50 50 50)',
   };
   const navbarProps: NavbarProps = {
     pagesProps: [
