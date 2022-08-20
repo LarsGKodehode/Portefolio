@@ -1,12 +1,14 @@
 // CSS
 import './App.css';
+
+// Types
+import { NavbarProps } from './components/Navbar/navbar.d';
+
 // Components
 import {
   Outlet,
 } from 'react-router-dom';
-import Navbar, { NavbarProps } from './components/Navbar/Navbar';
-
-
+import Navbar from './components/Navbar/Navbar';
 
 
 // Component
