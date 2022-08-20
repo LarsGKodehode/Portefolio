@@ -18,9 +18,6 @@ function App() {
     position: 'fixed',
     top: '0px',
     left: '0px',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
     backgroundColor: 'rgb(50 50 50)',
   };
   const sidebarProps: SidebarProps = {
@@ -28,6 +25,10 @@ function App() {
       {path: 'home', text:'Home'},
       {path: 'projects', text:'Projects'},
       {path: 'contact', text:'Contact'},
+    ],
+    presenceProps: [
+      {name: 'GitHub', link: 'https://github.com/LarsGKodehode'},
+      {name: 'Linkedin', link: 'https://no.linkedin.com/in/lars-gunnar-solheim-99818b249'},
     ],
     styling: sidebarStyling,
   };
