@@ -1,13 +1,12 @@
 // Libraries
 import React from "react";
-// Types
-import StyledLink, { StyledLinkProps } from "../StyledLink/StyledLink";
 
-// Interface
-interface NavbarProps {
-  pagesProps: Array<StyledLinkProps>,
-  styling: React.CSSProperties,
-};
+// Types
+import { StyledLinkProps, NavbarProps } from '../Navbar/navbar.d';
+
+// Components
+import StyledLink from "../StyledLink/StyledLink";
+
 
 // Component
 function Navbar(props: NavbarProps) {
@@ -29,7 +28,3 @@ function Navbar(props: NavbarProps) {
 };
 
 export default Navbar;
-
-export type {
-  NavbarProps,
-};

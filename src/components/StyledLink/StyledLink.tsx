@@ -2,12 +2,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-// Interface
-interface StyledLinkProps {
-  path: string,
-  text?: string,
-  svgPath?: string,
-};
+// Types
+import { StyledLinkProps } from '../Navbar/navbar.d'
 
 // Component
 function StyledLink(props: StyledLinkProps) {
