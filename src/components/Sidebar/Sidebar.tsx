@@ -2,14 +2,14 @@
 import React from "react";
 
 // Types
-import { StyledLinkProps, NavbarProps } from '../Navbar/navbar.d';
+import { StyledLinkProps, SidebarProps } from './sidebar.d';
 
 // Components
 import StyledLink from '../StyledLink/StyledLink';
 
 
 // Component
-function Navbar(props: NavbarProps) {
+function Sidebar(props: SidebarProps) {
   const { pagesProps, styling } = props;
 
   function mapPages(pageArray: Array<StyledLinkProps>) {
@@ -27,4 +27,4 @@ function Navbar(props: NavbarProps) {
   );
 };
 
-export default Navbar;
+export default Sidebar;

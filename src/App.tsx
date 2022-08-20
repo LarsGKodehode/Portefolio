@@ -2,19 +2,19 @@
 import './App.css';
 
 // Types
-import { NavbarProps } from './components/Navbar/navbar.d';
+import { SidebarProps } from './components/Sidebar/sidebar.d';
 
 // Components
 import {
   Outlet,
 } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
+import Sidebar from './components/Sidebar/Sidebar';
 
 
 // Component
 function App() {
 
-  const navbarStyling: React.CSSProperties = {
+  const sidebarStyling: React.CSSProperties = {
     position: 'fixed',
     top: '0px',
     left: '0px',
@@ -23,18 +23,18 @@ function App() {
     flexDirection: 'column',
     backgroundColor: 'rgb(50 50 50)',
   };
-  const navbarProps: NavbarProps = {
+  const sidebarProps: SidebarProps = {
     pagesProps: [
       {path: 'home', text:'Home'},
       {path: 'projects', text:'Projects'},
       {path: 'contact', text:'Contact'},
     ],
-    styling: navbarStyling,
+    styling: sidebarStyling,
   };
 
   return (
     <div className='App'>
-      <Navbar {...navbarProps} />
+      <Sidebar {...sidebarProps} />
       <main>
         <Outlet />
       </main>

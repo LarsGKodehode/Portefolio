@@ -6,12 +6,12 @@ interface StyledLinkProps {
   svgPath?: string,
 };
 
-interface NavbarProps {
+interface SidebarProps {
   pagesProps: Array<StyledLinkProps>,
   styling: React.CSSProperties,
 };
 
 export type {
   StyledLinkProps,
-  NavbarProps,
+  SidebarProps,
 };

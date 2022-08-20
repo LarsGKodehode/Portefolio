@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Types
-import { StyledLinkProps } from '../Navbar/navbar.d';
+import { StyledLinkProps } from '../Sidebar/sidebar.d';
 
 // Component
 function StyledLink(props: StyledLinkProps) {
