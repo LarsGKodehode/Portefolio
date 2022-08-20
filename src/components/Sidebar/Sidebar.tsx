@@ -16,13 +16,17 @@ function Sidebar(props: SidebarProps) {
     presenceProps
   } = props;
 
-  
+  /**
+   * Create Links
+   */
+  // internal links
   function mapPages(pageArray: Array<StyledLinkProps>) {
     return(pageArray.map( (pageProps: StyledLinkProps) =>
       <StyledLink {...pageProps} />
     ));
   };
 
+  // external links
   function mapPresence(presenceArray: Array<PresenceLinkProps>) {
     return(presenceArray.map( (props: PresenceLinkProps) => 
       <PresenceLink {...props} />
@@ -30,6 +34,7 @@ function Sidebar(props: SidebarProps) {
   };
 
 
+  // Style Navbar
   const barStyling: React.CSSProperties = {
     ...props.styling,
     height: '100%',
@@ -39,6 +44,7 @@ function Sidebar(props: SidebarProps) {
     padding: '2em .5em'
   };
   
+  // Style nav sections
   const navContainerStyling: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
@@ -50,6 +56,7 @@ function Sidebar(props: SidebarProps) {
     ...navContainerStyling,
   };
 
+  
   return(
     <div
       style={barStyling}
