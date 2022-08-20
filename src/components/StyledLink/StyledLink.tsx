@@ -27,7 +27,7 @@ function StyledLink(props: StyledLinkProps) {
   };
   const styling: React.CSSProperties = {
     margin: '1em',
-    backgroundColor: isHover ? 'purpple' : '',
+    backgroundColor: isHover ? 'purple' : '',
     padding: '1em',
     borderRadius: '50%',
     textAlign: 'center',
