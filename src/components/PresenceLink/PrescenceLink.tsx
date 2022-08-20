@@ -1,5 +1,4 @@
-// Type
-import { HTMLAttributeAnchorTarget } from "react";
+// Types
 import { PresenceLinkProps } from "../Sidebar/sidebar.d";
 
 
@@ -12,13 +11,21 @@ function PresenceLink(props: PresenceLinkProps) {
     logoPath,
   } = props;
 
+  const linkProps: React.CSSProperties = {
+
+  };
+
 
   return(
     <a
       href={link}
       target='_blank'
+      title={name}
     >
-      {name}
+      { logoPath ?
+        <img src={logoPath} /> :
+        name
+      }
     </a>
   );
 };

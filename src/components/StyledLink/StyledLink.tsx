@@ -1,9 +1,12 @@
-// Components
+// Libraries
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 // Types
 import { StyledLinkProps } from '../Sidebar/sidebar.d';
+
+// External Components
+import { Link } from "react-router-dom";
+
 
 // Component
 function StyledLink(props: StyledLinkProps) {
@@ -29,7 +32,7 @@ function StyledLink(props: StyledLinkProps) {
     margin: '1em',
     backgroundColor: isHover ? 'purple' : '',
     padding: '1em',
-    borderRadius: '50%',
+    borderRadius: '15px',
     textAlign: 'center',
     textDecoration: 'none'
   };

@@ -4,6 +4,10 @@ import './App.css';
 // Types
 import { SidebarProps } from './components/Sidebar/sidebar.d';
 
+// Assets
+import logoLinkedin from './assets/logos/Linkedin-square.svg';
+import logoGitHub from './assets/logos/GitHub-square.svg';
+
 // Components
 import {
   Outlet,
@@ -27,8 +31,8 @@ function App() {
       {path: 'contact', text:'Contact'},
     ],
     presenceProps: [
-      {name: 'GitHub', link: 'https://github.com/LarsGKodehode'},
-      {name: 'Linkedin', link: 'https://no.linkedin.com/in/lars-gunnar-solheim-99818b249'},
+      {name: 'GitHub', link: 'https://github.com/LarsGKodehode', logoPath: logoGitHub},
+      {name: 'Linkedin', link: 'https://no.linkedin.com/in/lars-gunnar-solheim-99818b249', logoPath: logoLinkedin},
     ],
     styling: sidebarStyling,
   };

@@ -4,14 +4,17 @@ import React from "react";
 // Types
 import { StyledLinkProps, PresenceLinkProps, SidebarProps } from './sidebar.d';
 
-// Components
+// External Components
 import StyledLink from '../StyledLink/StyledLink';
 import PresenceLink from "../PresenceLink/PrescenceLink";
 
 
 // Component
 function Sidebar(props: SidebarProps) {
-  const { pagesProps, presenceProps } = props;
+  const {
+    pagesProps,
+    presenceProps
+  } = props;
 
   const barStyling: React.CSSProperties = {
     ...props.styling,
