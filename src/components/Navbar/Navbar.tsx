@@ -5,7 +5,7 @@ import React from "react";
 import { StyledLinkProps, NavbarProps } from '../Navbar/navbar.d';
 
 // Components
-import StyledLink from "../StyledLink/StyledLink";
+import StyledLink from '../StyledLink/StyledLink';
 
 
 // Component
