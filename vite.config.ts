@@ -9,4 +9,5 @@ export default defineConfig({
     outDir: './release'
   },
   
+  base: '/Portefolio/'
 })
