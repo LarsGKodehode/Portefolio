@@ -16,31 +16,47 @@ function Sidebar(props: SidebarProps) {
     presenceProps
   } = props;
 
-  const barStyling: React.CSSProperties = {
-    ...props.styling,
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  };
-  
-  const navWrapperStyling: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-  };
-  
-
+  /**
+   * Create Links
+   */
+  // internal links
   function mapPages(pageArray: Array<StyledLinkProps>) {
     return(pageArray.map( (pageProps: StyledLinkProps) =>
       <StyledLink {...pageProps} />
     ));
   };
 
+  // external links
   function mapPresence(presenceArray: Array<PresenceLinkProps>) {
     return(presenceArray.map( (props: PresenceLinkProps) => 
       <PresenceLink {...props} />
     ));
   };
 
+
+  // Style Navbar
+  const barStyling: React.CSSProperties = {
+    ...props.styling,
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: '2em .5em'
+  };
+  
+  // Style nav sections
+  const navContainerStyling: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+  };
+  const internalNavStyling: React.CSSProperties = {
+    ...navContainerStyling,
+  };
+  const externalNavStyling: React.CSSProperties = {
+    ...navContainerStyling,
+  };
+
+  
   return(
     <div
       style={barStyling}
@@ -48,14 +64,14 @@ function Sidebar(props: SidebarProps) {
 
       <nav
         aria-labelledby="internal-navigation"
-        style={navWrapperStyling}
+        style={internalNavStyling}
       >
         {React.Children.toArray(mapPages(pagesProps))}
       </nav>
 
       <nav
         aria-labelledby="external-links"
-        style={navWrapperStyling}
+        style={externalNavStyling}
       >
         {React.Children.toArray(mapPresence(presenceProps))}
       </nav>
