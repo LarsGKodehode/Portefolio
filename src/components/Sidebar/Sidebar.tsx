@@ -2,7 +2,7 @@
 import React from "react";
 
 // Types
-import { StyledLinkProps, PresenceLinkProps, SidebarProps } from './sidebar.d';
+import { StyledLinkProps, SidebarProps } from './sidebar.d';
 
 // External Components
 import StyledLink from './StyledLink/StyledLink';
