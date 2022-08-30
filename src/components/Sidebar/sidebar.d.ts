@@ -1,9 +1,13 @@
 // Interface
 
+import React from "react";
+
 interface StyledLinkProps {
   path: string,
-  text?: string,
+  internal: boolean,
+  name: string,
   svgPath?: string,
+  style?: React.CSSProperties,
 };
 
 interface PresenceLinkProps {
@@ -15,7 +19,7 @@ interface PresenceLinkProps {
 
 interface SidebarProps {
   pagesProps: Array<StyledLinkProps>,
-  presenceProps: Array<PresenceLinkProps>,
+  presenceProps: Array<StyledLinkProps>,
   styling: React.CSSProperties,
 };
 

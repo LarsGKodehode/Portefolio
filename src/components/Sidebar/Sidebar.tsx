@@ -6,7 +6,6 @@ import { StyledLinkProps, PresenceLinkProps, SidebarProps } from './sidebar.d';
 
 // External Components
 import StyledLink from './StyledLink/StyledLink';
-import PresenceLink from "./PresenceLink/PrescenceLink";
 
 
 // Component
@@ -20,18 +19,14 @@ function Sidebar(props: SidebarProps) {
    * Create Links
    */
   // internal links
-  function mapPages(pageArray: Array<StyledLinkProps>) {
+  function mapLinks(pageArray: Array<StyledLinkProps>) {
     return(pageArray.map( (pageProps: StyledLinkProps) =>
       <StyledLink {...pageProps} />
     ));
   };
 
-  // external links
-  function mapPresence(presenceArray: Array<PresenceLinkProps>) {
-    return(presenceArray.map( (props: PresenceLinkProps) => 
-      <PresenceLink {...props} />
-    ));
-  };
+  const internalLinks = mapLinks(pagesProps);
+  const externalLinks = mapLinks(presenceProps);
 
 
   // Style Navbar
@@ -66,14 +61,14 @@ function Sidebar(props: SidebarProps) {
         aria-labelledby="internal-navigation"
         style={internalNavStyling}
       >
-        {React.Children.toArray(mapPages(pagesProps))}
+        {React.Children.toArray(internalLinks)}
       </nav>
 
       <nav
         aria-labelledby="external-links"
         style={externalNavStyling}
       >
-        {React.Children.toArray(mapPresence(presenceProps))}
+        {React.Children.toArray(externalLinks)}
       </nav>
 
     </div>
