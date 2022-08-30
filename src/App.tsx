@@ -18,6 +18,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 // Component
 function App() {
+
+  // Constructing props
   const sidebarStyling: React.CSSProperties = {
     position: 'fixed',
     top: '0px',
@@ -26,17 +28,41 @@ function App() {
   };
   const sidebarProps: SidebarProps = {
     pagesProps: [
-      {path: 'home', svgPath: iconHome},
-      {path: 'projects', text:'Projects'},
-      {path: 'contact', text:'Contact'},
+      {
+        internal: true,
+        path: 'home',
+        name: 'Home',
+        svgPath: iconHome,
+      },
+      {
+        internal: true,
+        path: 'projects',
+        name:'Projects',
+      },
+      {
+        internal: true,
+        path: 'contact',
+        name:'Contact',
+      },
     ],
     presenceProps: [
-      {name: 'GitHub', link: 'https://github.com/LarsGKodehode', logoPath: logoGitHub},
-      {name: 'Linkedin', link: 'https://no.linkedin.com/in/lars-gunnar-solheim-99818b249', logoPath: logoLinkedin},
+      {
+        internal: false,
+        path: 'https://github.com/LarsGKodehode',
+        name: 'GitHub',
+        svgPath: logoGitHub,
+      },
+      {
+        internal: false,
+        path: 'https://no.linkedin.com/in/lars-gunnar-solheim-99818b249',
+        name: 'Linkedin',
+        svgPath: logoLinkedin,
+      },
     ],
     styling: sidebarStyling,
   };
 
+  // Return component
   return (
     <div className='App'>
       <Sidebar {...sidebarProps} />

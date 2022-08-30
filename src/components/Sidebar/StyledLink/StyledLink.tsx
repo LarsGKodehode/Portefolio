@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 // Component
 function StyledLink(props: StyledLinkProps) {
-  const { path, text, svgPath } = props;
+  const { internal, path, name, svgPath, style } = props;
 
   // state managment
   const [ isHover, setIsHover ] = useState(false);
@@ -35,22 +35,34 @@ function StyledLink(props: StyledLinkProps) {
     width: '80%', 
     borderRadius: '15px',
     textAlign: 'center',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    ...style,
   };
-  // Finish construction of props
-  const linkProps = {
-    style: styling,
-    to: path,
-    ...handlers,
-  };
-
-
 
   return(
-    <Link {...linkProps}>
-      {text && text}
-      {svgPath && <img src={svgPath} />}
-    </Link>
+    // Is link to same site?
+    internal ?
+      <Link
+        style={styling}
+        to={path}
+        {...handlers}
+      >
+
+        {svgPath && <img src={svgPath} /> || name}
+
+      </Link>
+    : // This is an external linkg
+      <a
+        style={styling}
+        href={path}
+        target='_blank'
+        title={name}
+        {...handlers}
+      >
+
+        { svgPath && <img src={svgPath} /> || name}
+
+      </a>
   );
 };
 
