@@ -2,15 +2,16 @@
 This repository contains src files for my own homepage
 
 # Sjekkliste
-- Bra at man leker seg med fargebruk, ville brukt lysere farger. (foreslår noe pastell greier) 
-- Snakk med James om hvordan få inn github info. 
-- Tøff navbar, få inn en drop-shadow på den. 
-- Hamburger meny når telefon.
-- Sosiale medier iconer bør være mindre
-- Prøv å være konsekvent med navbar farger. (!) 
-- Tenk over rekkefølgen man presenterer informasjon på. 
-     - 1 bilde, 2 om deg (kort), 3 skills. 
-     - gjerne i samme page / kort. 
-- Prøv å bruk denne på kort/bokser som du lager https://css.glass/
-- Bruk en bakgrunn med noen elementer slik at de blir mer uklar med css glass boks over. 
-- Fonts.
+- Play around with colours, advice was lighter hues, (pastell is all the rage now).
+- Gihub API gives access to account information, ask comrades about this.
+- Add shadow to navbar. Create some depth on page
+- Tiny navbar on mobil.
+- Prescence icons are humongous, make them more refined.
+- Keep color palette minimalistic and apply colours consistently.
+- Mind the 1-2-3-whammy:
+  1. Face.
+  2. Who am I.
+  3. Skillset.
+- Glassmorphisme is cool when applied correctly
+  - Mind overuse, performance and uniqueness value
+- Custom fonts.
