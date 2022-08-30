@@ -35,7 +35,8 @@ function Sidebar(props: SidebarProps) {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    padding: '2em .1em'
+    padding: '2em .1em',
+    maxWidth: '10%'
   };
   
   // Style nav sections

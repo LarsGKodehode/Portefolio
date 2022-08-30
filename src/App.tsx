@@ -8,6 +8,8 @@ import { SidebarProps } from './components/Sidebar/sidebar.d';
 import logoLinkedin from './assets/logos/Linkedin-square.svg';
 import logoGitHub from './assets/logos/GitHub-square.svg';
 import iconHome from './assets/icons/home.svg';
+import iconProjects from './assets/icons/projects.svg';
+import iconContact from './assets/icons/contact.svg';
 
 // Components
 import {
@@ -37,12 +39,14 @@ function App() {
       {
         internal: true,
         path: 'projects',
-        name:'Projects',
+        name: 'Projects',
+        svgPath: iconProjects,
       },
       {
         internal: true,
         path: 'contact',
         name:'Contact',
+        svgPath: iconContact,
       },
     ],
     presenceProps: [
