@@ -7,6 +7,7 @@ import { SidebarProps } from './components/Sidebar/sidebar.d';
 // Assets
 import logoLinkedin from './assets/logos/Linkedin-square.svg';
 import logoGitHub from './assets/logos/GitHub-square.svg';
+import iconHome from './assets/icons/home.svg';
 
 // Components
 import {
@@ -17,7 +18,6 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 // Component
 function App() {
-
   const sidebarStyling: React.CSSProperties = {
     position: 'fixed',
     top: '0px',
@@ -26,7 +26,7 @@ function App() {
   };
   const sidebarProps: SidebarProps = {
     pagesProps: [
-      {path: 'home', text:'Home'},
+      {path: 'home', svgPath: iconHome},
       {path: 'projects', text:'Projects'},
       {path: 'contact', text:'Contact'},
     ],

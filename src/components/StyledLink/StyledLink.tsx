@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 // Component
 function StyledLink(props: StyledLinkProps) {
-  const { path, text } = props;
+  const { path, text, svgPath } = props;
 
   // state managment
   const [ isHover, setIsHover ] = useState(false);
@@ -32,6 +32,7 @@ function StyledLink(props: StyledLinkProps) {
     margin: '1em',
     backgroundColor: isHover ? 'purple' : '',
     padding: '1em',
+    width: '80%', 
     borderRadius: '15px',
     textAlign: 'center',
     textDecoration: 'none'
@@ -43,9 +44,12 @@ function StyledLink(props: StyledLinkProps) {
     ...handlers,
   };
 
+
+
   return(
     <Link {...linkProps}>
-      {text}
+      {text && text}
+      {svgPath && <img src={svgPath} />}
     </Link>
   );
 };
