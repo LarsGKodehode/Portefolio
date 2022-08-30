@@ -5,8 +5,8 @@ import React from "react";
 import { StyledLinkProps, PresenceLinkProps, SidebarProps } from './sidebar.d';
 
 // External Components
-import StyledLink from '../StyledLink/StyledLink';
-import PresenceLink from "../PresenceLink/PrescenceLink";
+import StyledLink from './StyledLink/StyledLink';
+import PresenceLink from "./PresenceLink/PrescenceLink";
 
 
 // Component

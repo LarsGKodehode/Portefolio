@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // Types
-import { StyledLinkProps } from '../Sidebar/sidebar.d';
+import { StyledLinkProps } from '../sidebar.d';
 
 // External Components
 import { Link } from "react-router-dom";

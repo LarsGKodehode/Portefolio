@@ -1,6 +1,6 @@
 // Types
 import React from "react";
-import { PresenceLinkProps } from "../Sidebar/sidebar.d";
+import { PresenceLinkProps } from "../sidebar.d";
 
 
 // Component
