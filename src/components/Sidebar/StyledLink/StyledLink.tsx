@@ -23,21 +23,41 @@ function StyledLink(props: StyledLinkProps) {
     setIsHover(false);
   };
 
-  // construct props
+  // Construct props
   const handlers = {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
   };
+
+  // Center content config
+  const centerContent = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+  };
+
+  // Shape
+  const shape = {
+    borderRadius: '5px',
+    margin: '1em .5em',
+    padding: '.2em',
+  };
+
   const styling: React.CSSProperties = {
-    margin: '1em',
     backgroundColor: isHover ? 'purple' : '',
-    padding: '1em',
-    width: '80%', 
-    borderRadius: '15px',
-    textAlign: 'center',
     textDecoration: 'none',
+    cursor: 'pointer',
+    ...centerContent,
+    ...shape,
     ...style,
   };
+
+  const iconStyle: React.CSSProperties = {
+    width: '100%',
+    height: 'auto',
+  };
+
+
 
   return(
     // Is link to same site?
@@ -45,13 +65,14 @@ function StyledLink(props: StyledLinkProps) {
       <Link
         style={styling}
         to={path}
+        title={name}
         {...handlers}
       >
 
-        {svgPath && <img src={svgPath} /> || name}
+        {svgPath && <img src={svgPath} style={iconStyle} /> || name}
 
       </Link>
-    : // This is an external linkg
+    : // This is an external link
       <a
         style={styling}
         href={path}
@@ -60,7 +81,7 @@ function StyledLink(props: StyledLinkProps) {
         {...handlers}
       >
 
-        { svgPath && <img src={svgPath} /> || name}
+        { svgPath && <img src={svgPath} style={iconStyle} /> || name}
 
       </a>
   );
