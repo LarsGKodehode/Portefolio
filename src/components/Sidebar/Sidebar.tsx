@@ -2,7 +2,7 @@
 import React from "react";
 
 // Types
-import { StyledLinkProps, PresenceLinkProps, SidebarProps } from './sidebar.d';
+import { StyledLinkProps, SidebarProps } from './sidebar.d';
 
 // External Components
 import StyledLink from './StyledLink/StyledLink';
@@ -18,7 +18,6 @@ function Sidebar(props: SidebarProps) {
   /**
    * Create Links
    */
-  // internal links
   function mapLinks(pageArray: Array<StyledLinkProps>) {
     return(pageArray.map( (pageProps: StyledLinkProps) =>
       <StyledLink {...pageProps} />
@@ -36,19 +35,20 @@ function Sidebar(props: SidebarProps) {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    padding: '2em .5em'
+    padding: '2em .4em 1em',
+    minWidth: '50px',
+    width: '10%',
+    maxWidth: '100px',
+    boxShadow: `
+      2px 0px 20px 4px black,
+      -10px 0px 10px 0px inset #9999995f
+    `,
   };
   
   // Style nav sections
   const navContainerStyling: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
-  };
-  const internalNavStyling: React.CSSProperties = {
-    ...navContainerStyling,
-  };
-  const externalNavStyling: React.CSSProperties = {
-    ...navContainerStyling,
   };
 
   
@@ -59,14 +59,14 @@ function Sidebar(props: SidebarProps) {
 
       <nav
         aria-labelledby="internal-navigation"
-        style={internalNavStyling}
+        style={navContainerStyling}
       >
         {React.Children.toArray(internalLinks)}
       </nav>
 
       <nav
         aria-labelledby="external-links"
-        style={externalNavStyling}
+        style={navContainerStyling}
       >
         {React.Children.toArray(externalLinks)}
       </nav>
