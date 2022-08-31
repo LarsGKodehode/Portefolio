@@ -28,6 +28,7 @@ function App() {
     left: '0px',
     backgroundColor: 'rgb(50 50 50)',
   };
+
   const sidebarProps: SidebarProps = {
     pagesProps: [
       {
@@ -65,6 +66,7 @@ function App() {
     ],
     styling: sidebarStyling,
   };
+  
 
   // Return component
   return (

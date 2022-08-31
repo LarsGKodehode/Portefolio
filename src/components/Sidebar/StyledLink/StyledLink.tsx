@@ -10,11 +10,13 @@ import { Link } from "react-router-dom";
 
 // Component
 function StyledLink(props: StyledLinkProps) {
+  // Extract prop
   const { internal, path, name, svgPath, style } = props;
 
-  // state managment
+  // State managment
   const [ isHover, setIsHover ] = useState(false);
 
+  // Event handlers
   const handleMouseEnter = () => {
     setIsHover(true);
   };
@@ -39,8 +41,8 @@ function StyledLink(props: StyledLinkProps) {
   // Shape
   const shape = {
     borderRadius: '5px',
-    margin: '1em .5em',
-    padding: '.2em',
+    margin: '15% 1%',
+    padding: '10%',
   };
 
   const styling: React.CSSProperties = {
@@ -52,6 +54,7 @@ function StyledLink(props: StyledLinkProps) {
     ...style,
   };
 
+  // Icon style
   const iconStyle: React.CSSProperties = {
     width: '100%',
     height: 'auto',
