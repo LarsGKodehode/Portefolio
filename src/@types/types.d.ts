@@ -14,7 +14,7 @@ export interface Missing404Props {}
  * Homepage props
  */
 export interface HomeProps {
-  bio: BioData,
+  bio: DataBio,
 }
 
 /**
@@ -46,9 +46,9 @@ export interface ProjectData {
 /**
  * Bio. 1-2-3-whammy data
  */
-export interface BioData {
+export interface DataBio {
   name: string,
   bioShort: string,
   bioLong?: string,
-  picturePath: URL | string,
+  pictureURL: URL | string,
 }

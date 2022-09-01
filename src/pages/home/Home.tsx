@@ -1,3 +1,7 @@
+// Types
+import { HomeProps } from '../../@types/types';
+
+// Components
 import CustomSVG, { Color, CustomSVGProps } from "../../components/CustomSVG/CustomSVG";
 
 /**
@@ -7,7 +11,7 @@ import CustomSVG, { Color, CustomSVGProps } from "../../components/CustomSVG/Cus
  * - Skillset
  * - Top picks of projects to showcase
  */
-function Home() {
+function Home(props: HomeProps) {
 
   // Constructing the props
   const style: React.CSSProperties = {
