@@ -1,7 +1,7 @@
 # Homepage for Lars Gunnar
 This repository contains src files for my own homepage
 
-# Sjekkliste
+# Checklist
 - Play around with colours, advice was lighter hues, (pastell is all the rage now).
 - Gihub API gives access to account information, ask comrades about this.
 - ~~Add shadow to navbar. Create some depth on page~~
