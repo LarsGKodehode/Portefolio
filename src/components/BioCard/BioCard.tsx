@@ -31,7 +31,7 @@ function BioCard(props: BioCardProps): JSX.Element {
     justifySelf: 'center',
   };
 
-  const picutreProps = {
+  const pictureProps = {
     src: pictureURL,
     alt: pictureAlt,
     title: pictureAlt,
@@ -56,7 +56,7 @@ function BioCard(props: BioCardProps): JSX.Element {
 
   return(
     <section style={cardStyle}>
-      <img {...picutreProps}/>
+      <img {...pictureProps}/>
       <h1 {...nameProps}>{name}</h1>
       <p {...bioShortProps}>{bioShort}</p>
     </section>
