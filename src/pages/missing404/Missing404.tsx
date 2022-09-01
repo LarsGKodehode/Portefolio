@@ -1,9 +1,6 @@
-//interface
-interface Missing404Props {
-
-};
-
-// Component
+/**
+ * 404, Catch all fallthrough page
+ */
 function Missing404() {
   return(
     <div>
@@ -13,7 +10,3 @@ function Missing404() {
 };
 
 export default Missing404;
-
-export type {
-  Missing404Props,
-};
