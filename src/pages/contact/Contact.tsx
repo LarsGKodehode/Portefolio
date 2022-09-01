@@ -1,4 +1,6 @@
-// Component
+/**
+ * Contact info, possibly contact form
+ */
 function Contact() {
   return(
     <div>

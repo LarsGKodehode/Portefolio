@@ -2,11 +2,10 @@ import CustomSVG, { Color, CustomSVGProps } from "../../components/CustomSVG/Cus
 
 /**
  * Homepage and landing page
- * 1. Bio
- *  - Picture
- *  - 2-line-hook
- *  - Skillset
- * 2. Top picks of projects to showcase
+ * - Picture
+ * - 2-line-hook
+ * - Skillset
+ * - Top picks of projects to showcase
  */
 function Home() {
 
