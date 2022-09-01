@@ -1,5 +1,6 @@
+// Types
 import { CSSProperties } from "styled-components";
-import { BioCardProps } from "../../@types/types";
+import { BioCardProps, ColorHEX } from "../../@types/types";
 
 /**
  * Card for displaying bio information
@@ -15,12 +16,24 @@ function BioCard(props: BioCardProps): JSX.Element {
   // Construct various props
   const pictureAlt = `Picture of ${name}`;
 
+  /**
+   * Material: Glass
+   */
+  const glassMaterial = (tint: ColorHEX): CSSProperties => {
+    return {
+      backgroundColor: tint + '40',
+    };
+  };
+
   const cardStyle: CSSProperties = {
     display: 'grid',
     gridTemplateAreas: `
       'img name'
       'img bio'
     `,
+    borderRadius: '20px',
+    padding: 'min(2%, 40px)',
+    ...glassMaterial('#ffffff'),
   };
 
   const pictureStyle: CSSProperties = {

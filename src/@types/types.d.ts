@@ -2,6 +2,7 @@
 // #01 - Page Props
 // #02 - Import Types
 // #03 - Minor Components Props
+// #04 - Misc Types
 
 
 // ===== #01 - Page Props =====
@@ -66,3 +67,7 @@ export interface BioCardProps {
   bioLong?: string,
   pictureURL: string,
 }
+
+// ===== #04 - Misc Types =====
+
+export type ColorHEX = string
