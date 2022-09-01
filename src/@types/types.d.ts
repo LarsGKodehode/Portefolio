@@ -12,9 +12,14 @@ export interface Missing404Props {};
 /**
  * Homepage props
  */
-interface HomeProps {};
+export interface HomeProps {};
 
 /**
  * Project page props
  */
  export interface ProjectsProps {};
+
+ /**
+  * Contact page props
+  */
+export interface ContactProps {};
