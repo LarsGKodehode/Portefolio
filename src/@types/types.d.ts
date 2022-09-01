@@ -8,22 +8,22 @@
 /**
  * 404 page props
  */
-export interface Missing404Props {};
+export interface Missing404Props {}
 
 /**
  * Homepage props
  */
-export interface HomeProps {};
+export interface HomeProps {}
 
 /**
  * Project page props
  */
- export interface ProjectsProps {};
+ export interface ProjectsProps {}
 
  /**
   * Contact page props
   */
-export interface ContactProps {};
+export interface ContactProps {}
 
 
 // ===== #02 - Import Types =====
@@ -39,4 +39,4 @@ export interface ProjectData {
     {[site: string]: URL},
   ],
   snapshot: URL,
-};
+}
