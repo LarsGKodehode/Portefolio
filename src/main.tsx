@@ -43,7 +43,7 @@ root.render(
 
         <Route path='/' element={<App />}>
 
-        <Route path='home' element={<Home />} />
+        <Route path='home' element={<Home {...DataHome} />} />
         <Route path='projects' element={<Projects />} />
         <Route path='contact' element={<Contact />} />
 

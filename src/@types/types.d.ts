@@ -1,6 +1,7 @@
 // === TABLE OF CONTENT ===
 // #01 - Page Props
 // #02 - Import Types
+// #03 - Minor Components Props
 
 
 // ===== #01 - Page Props =====
@@ -50,5 +51,18 @@ export interface DataBio {
   name: string,
   bioShort: string,
   bioLong?: string,
-  pictureURL: URL | string,
+  pictureURL: string,
+}
+
+
+// ===== #03 - Minor Components Props =====
+
+/**
+ * Bio card props
+ */
+export interface BioCardProps {
+  name: string,
+  bioShort: string,
+  bioLong?: string,
+  pictureURL: string,
 }
