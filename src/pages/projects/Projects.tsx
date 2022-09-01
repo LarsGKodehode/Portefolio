@@ -1,9 +1,6 @@
-//interface
-interface ProjectsProps {
-
-};
-
-// Component
+/**
+ * Page containing exhastive list of projects
+ */
 function Projects() {
   return(
     <div>
@@ -13,7 +10,3 @@ function Projects() {
 };
 
 export default Projects;
-
-export type {
-  ProjectsProps,
-};

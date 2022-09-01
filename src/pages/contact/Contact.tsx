@@ -1,9 +1,6 @@
-//interface
-interface ContactProps {
-
-};
-
-// Component
+/**
+ * Contact info, possibly contact form
+ */
 function Contact() {
   return(
     <div>
@@ -13,7 +10,3 @@ function Contact() {
 };
 
 export default Contact;
-
-export type {
-  ContactProps,
-};
