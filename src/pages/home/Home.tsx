@@ -1,4 +1,8 @@
-import CustomSVG, { Color, CustomSVGProps } from "../../components/CustomSVG/CustomSVG";
+// Types
+import { HomeProps } from '../../@types/types';
+
+// Components
+import BioCard from '../../components/BioCard/BioCard';
 
 /**
  * Homepage and landing page
@@ -7,32 +11,24 @@ import CustomSVG, { Color, CustomSVGProps } from "../../components/CustomSVG/Cus
  * - Skillset
  * - Top picks of projects to showcase
  */
-function Home() {
+function Home(props: HomeProps) {
+  // Destructuring incomming prop
+  const { bio } = props;
 
   // Constructing the props
   const style: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center',
     height: '100%',
   };
   const SVGWrapperProps = {
     style: style,
   };
 
-  const fill: Color = `rgb(${255}, ${255}, ${255})`;
-  const SVGProps: CustomSVGProps = {
-    width: 100,
-    height: 100,
-    fill: fill,
-  };
-
 
   // Returned Components
   return(
     <div>
-      <h1>Home Page</h1>
       <div {...SVGWrapperProps} >
-        <CustomSVG {...SVGProps} />
+        <BioCard {...bio} />
       </div>
     </div>
   );
