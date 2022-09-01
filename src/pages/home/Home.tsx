@@ -1,9 +1,13 @@
 import CustomSVG, { Color, CustomSVGProps } from "../../components/CustomSVG/CustomSVG";
 
-//interface
-interface HomeProps {};
-
-// Component
+/**
+ * Homepage and landing page
+ * 1. Bio
+ *  - Picture
+ *  - 2-line-hook
+ *  - Skillset
+ * 2. Top picks of projects to showcase
+ */
 function Home() {
 
   // Constructing the props
@@ -36,7 +40,3 @@ function Home() {
 };
 
 export default Home;
-
-export type {
-  HomeProps,
-};
