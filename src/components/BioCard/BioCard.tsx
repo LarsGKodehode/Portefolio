@@ -2,6 +2,24 @@
 import { CSSProperties } from "styled-components";
 import { BioCardProps, ColorHEX } from "../../@types/types";
 
+// Material
+import Material from "../../utilities/Material/Material";
+import { MaterialGlass } from "../../utilities/Material/Material.d";
+
+// Const variables
+
+// Glass properties
+const glassProperties: MaterialGlass = {
+  material: 'glass',
+  tint: [80, 80, 80],
+  opacity: '0.3',
+};
+/**
+ * Material: Glass
+ */
+const glassMaterial = Material(glassProperties);
+
+
 /**
  * Card for displaying bio information
  */
@@ -16,24 +34,17 @@ function BioCard(props: BioCardProps): JSX.Element {
   // Construct various props
   const pictureAlt = `Picture of ${name}`;
 
-  /**
-   * Material: Glass
-   */
-  const glassMaterial = (tint: ColorHEX): CSSProperties => {
-    return {
-      backgroundColor: tint + '40',
-    };
-  };
-
   const cardStyle: CSSProperties = {
     display: 'grid',
     gridTemplateAreas: `
       'img name'
       'img bio'
     `,
+    gridTemplateColumns: 'min(100px, 2fr) max(10em, 100px)',
+    gridTemplateRows: 'repeat(2, 1fr)',
     borderRadius: '20px',
-    padding: 'min(2%, 40px)',
-    ...glassMaterial('#ffffff'),
+    padding: 'min(2%, 20px)',
+    ...glassMaterial,
   };
 
   const pictureStyle: CSSProperties = {
