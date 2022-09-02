@@ -10,9 +10,12 @@ export type MaterialCreateInfo =
 // Material Glass types
 
 /**
- * Material: Glass
+ * Fields
+ * - material
+ * - tint
+ * - opacity
  */
-interface MaterialGlass {
+export interface MaterialGlass {
   material: 'glass',
   tint: Color,
   opacity: AlphaChanel,
@@ -30,8 +33,11 @@ interface MaterialFabric {
 }
 
 // Common types
-type Color = string
+type Color = RGB
 
+// !!!NOTE!!! This is horrible inefficient for InteliSense,
+// Look for a more efficient approach, could be possible to precalculate and "cache" the result
+// Doing a search should be much more efficent than what can only be a recursive recalculation
 
 // Define range of numbers, useful for typechecking rgb, opacity and
 // other types where only a subset of float32 is okay to use
