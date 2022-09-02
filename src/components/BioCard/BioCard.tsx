@@ -33,7 +33,7 @@ function BioCard(props: BioCardProps): JSX.Element {
   } = props;
 
   // Get refrence to this instance
-  const reference = useRef<HTMLDivElement>(null);
+  const reference = useRef<HTMLDivElement | null>(null);
 
   // Construct various props
   const pictureAlt = `Picture of ${name}`;
