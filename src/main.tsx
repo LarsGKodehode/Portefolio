@@ -6,8 +6,13 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+
 // CSS
 import './index.css';
+
+// Content
+import DataHome from './pages/home/data.home';
+
 // Components
 import App from './App';
 import Missing404 from './pages/missing404/Missing404';
@@ -38,7 +43,7 @@ root.render(
 
         <Route path='/' element={<App />}>
 
-        <Route path='home' element={<Home />} />
+        <Route path='home' element={<Home {...DataHome} />} />
         <Route path='projects' element={<Projects />} />
         <Route path='contact' element={<Contact />} />
 
