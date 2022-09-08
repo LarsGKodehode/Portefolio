@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test-build": "tsc && vite build",
+    "posttest-build": "rm -rf release"
   },
   "dependencies": {
     "@types/react": "^18.0.17",
