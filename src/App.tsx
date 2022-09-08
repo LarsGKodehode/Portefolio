@@ -70,7 +70,7 @@ function App() {
   return (
     <div className='App'>
       <Sidebar {...sidebarProps} />
-      <main style={{gridArea: "main"}}>
+      <main style={{gridArea: "main", padding: '2rem 4rem 1rem 0px'}}>
         <Outlet />
       </main>
     </div>
