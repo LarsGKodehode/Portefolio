@@ -31,7 +31,7 @@ function App() {
     pagesProps: [
       {
         internal: true,
-        path: 'home',
+        path: '/',
         name: 'Home',
         svgPath: iconHome,
       },
