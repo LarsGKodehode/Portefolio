@@ -23,9 +23,7 @@ function App() {
 
   // Constructing props
   const sidebarStyling: React.CSSProperties = {
-    position: 'fixed',
-    top: '0px',
-    left: '0px',
+    gridArea: 'nav',
     backgroundColor: 'rgb(50 50 50)',
   };
 
@@ -33,7 +31,7 @@ function App() {
     pagesProps: [
       {
         internal: true,
-        path: 'home',
+        path: '/',
         name: 'Home',
         svgPath: iconHome,
       },
@@ -72,7 +70,7 @@ function App() {
   return (
     <div className='App'>
       <Sidebar {...sidebarProps} />
-      <main>
+      <main style={{gridArea: "main", padding: '2rem 4rem 1rem 0px'}}>
         <Outlet />
       </main>
     </div>
