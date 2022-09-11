@@ -13,9 +13,6 @@ function Projects() {
   // State managment
   const [ projects, setProjects ] = useState<Array<RepositoryDetails>>([]);
 
-  console.log(process.env.API_GRAPHQL_GITHUB_ACCESS_TOKEN);
-
-
   /**
    * Initial fetching of projects
    */

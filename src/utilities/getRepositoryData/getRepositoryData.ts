@@ -12,11 +12,10 @@
 // - All logic and variables should be inside here
 
 // GitHub access token
-//  - This only requires read access, we could store the secret as an enviroment variable inside gh-pages server,
+//  - This token is scoped to read only, currently storing it inside the .env,
 //    without too much worry
-// DEV DELETE SECRET
-const ENV_GITHUB_TOKEN = process.env.API_GRAPHQL_GITHUB_ACCESS_TOKEN;
-// DEV DELETE SECRET
+const ENV_GITHUB_ACESS_TOKEN = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
+
 
 // Libraries
 import { graphql } from '@octokit/graphql';
@@ -73,7 +72,7 @@ const getRepositoryData = (profileName: string) => {
       `,
       {
         headers: {
-          authorization: `	Bearer ${ENV_GITHUB_TOKEN}`,
+          authorization: `	Bearer ${ENV_GITHUB_ACESS_TOKEN}`,
         },
         baseUrl: apiEndpoint,
       }
