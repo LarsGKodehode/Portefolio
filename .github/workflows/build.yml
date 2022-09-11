@@ -23,9 +23,11 @@ jobs:
           cache: 'npm'
       
       - name: Setup .env file
+        env:
+          API_KEY: ${{ secrets.API_GRAPHQL_GITHUB_ACCESS_TOKEN }}
         run: |
           touch .env
-          echo VITE_GITHUB_ACCESS_TOKEN=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 >> .env
+          echo VITE_GITHUB_ACCESS_TOKEN=$API_KEY >> .env
 
       - name: Install yarn
         run: npm install --locationi=global yarn
