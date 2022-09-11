@@ -10,54 +10,23 @@
 //
 //
 // - All logic and variables should be inside here
-// - Where to store GitHub access token?
-//  - This only requires read access, we could store the secret as an enviroment variable inside gh-pages server
 
+// GitHub access token
+//  - This only requires read access, we could store the secret as an enviroment variable inside gh-pages server,
+//    without too much worry
+// DEV DELETE SECRET
+const ENV_GITHUB_TOKEN = process.env.API_GRAPHQL_GITHUB_ACCESS_TOKEN;
+// DEV DELETE SECRET
 
-// DEV DELETE SECRET
-const ENV_GITHUB_TOKEN = "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";
-// DEV DELETE SECRET
+// Libraries
+import { graphql } from '@octokit/graphql';
+
 
 // Constants
 /**
  * Enpoint for GitHub GraphQL
  */
 const apiEndpoint = "https://api.github.com/graphql";
-
-const userRepositories = 32;
-/**
- * Querry Structure
- */
- const querry = JSON.parse(`
- {
-  repositoryOwner(login: "LarsGKodehode") {
-    ... on User {
-      name
-      bio
-      repositories(last: ${userRepositories}) {
-        totalCount
-        nodes {
-          id
-          name
-          description
-          updatedAt
-          url
-        }
-      }
-    }
-  }
-}
-`);
-
-const request = {
-  method: 'POST',
-  headers: {
-    'Autohrization': "Bearer " + ENV_GITHUB_TOKEN,
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-  },
-  body: querry,
-};
 
 
 /**
@@ -71,23 +40,51 @@ export interface RepositoryDetails {
 
 
 /**
- * Fetches all the repository details for a given account
- * @param accountName Case sensitive
- * @return A list of Repository details of all repositories belonging to $accountName
+ * Fetches all the repository details associated with given account
+ * @param profileName Case sensetive name of GitHub profile
+ * @return A promise resolving to a array of all repositories with details
  */
-const getRepositoryData = new Promise<Array<RepositoryDetails>>( async (resolve, reject) => {
-  // Declare export list
-  let projectsList: Array<RepositoryDetails> = [];
+const getRepositoryData = (profileName: string) => {
+  // Create new Promise for early returning
+  const promise = new Promise<Array<RepositoryDetails>>((resolve, reject) => {
+    async () => {
+      console.log("starting fetch");
 
-  if (projectsList.length === 0) {
-    const response = await fetch(apiEndpoint, request);
-    const parsed = response.json();
-    console.log(parsed)
-  };
+      // Get GitHub data
+      const response = await graphql(`
+        query($number_of_repos:Int!) {
+          repositoryOwner(login: "LarsGKodehode") {
+            ... on User {
+              name
+              bio
+              repositories(last: 32) {
+                totalCount
+                nodes {
+                  id
+                  name
+                  description
+                  updatedAt
+                  url
+                }
+              }
+            }
+          }
+        }
+      `,
+      {
+        headers: {
+          authorization: `	Bearer ${ENV_GITHUB_TOKEN}`,
+        },
+        baseUrl: apiEndpoint,
+      }
+      );
+    
+      console.log("fetch success");
+      console.dir(response);
+    };
+  });
 
-  // Return 
-  resolve(projectsList);
-  reject();
-});
+  return promise;
+};
 
 export default getRepositoryData;
