@@ -27,11 +27,7 @@ jobs:
           API_KEY: ${{ secrets.API_GRAPHQL_GITHUB_ACCESS_TOKEN }}
         run: |
           touch .env
-          cat <<EOF > .env
-          VITE_GITHUB_ACCESS_TOKEN=$API_KEY
-          EOF
-
-          echo "cat .env"
+          echo VITE_GITHUB_ACCESS_TOKEN=${API_KEY} >> .env
           cat .env
 
       - name: Install yarn
