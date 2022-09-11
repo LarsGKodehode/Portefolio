@@ -1,6 +1,9 @@
 // Libraries
 import React, { useEffect, useState } from "react";
-import getRepositoryData, { RepositoryDetails } from "../../utilities/getRepositoryData/getRepositoryData";
+// import getRepositoryData, { RepositoryDetails } from "../../utilities/getRepositoryData/getRepositoryData";
+
+// Types
+import { RepositoryDetails } from '../../utilities/getRepositoryData/getRepositoryData';
 
 
 /**
@@ -10,13 +13,16 @@ function Projects() {
   // State managment
   const [ projects, setProjects ] = useState<Array<RepositoryDetails>>([]);
 
+  console.log(process.env.API_GRAPHQL_GITHUB_ACCESS_TOKEN);
+
+
   /**
    * Initial fetching of projects
    */
   useEffect(() => {
     const fetchGitHubData = async () => {
-      const dataGitHub = await getRepositoryData("LarsGKodehode");
-      setProjects(dataGitHub);
+      // const dataGitHub = await getRepositoryData("LarsGKodehode");
+      // setProjects(dataGitHub);
     };
 
     fetchGitHubData();
