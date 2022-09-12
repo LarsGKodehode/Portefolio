@@ -61,7 +61,7 @@ interface GitHubResponseRepositories {
  * @param profileName Case sensetive name of GitHub profile
  * @return A promise resolving to a array of all repositories with details
  */
-const getRepositoryData = async (profileName: string) => {
+const getRepositoryData = async (profileName: string): Promise<Array<RepositoryDetails> | null> => {
   // Returned promise
    const promise = new Promise<Array<RepositoryDetails>>((resolve, reject) => {
     async function fetchGitHub() {
@@ -106,14 +106,29 @@ const getRepositoryData = async (profileName: string) => {
           }
         })
       });
+
+      // Perform check if response OK here
+      if(!response.ok) {
+        reject(`Could not fetch data from ${apiEndpoint}`);
+        return;
+      };
   
       // Parse response
       const parsed: {data: GitHubResponse} = await response.json();
 
-      // Destructure parts
-      const array = parsed.data.repositoryOwner.repositories.nodes;
+      // Get repository details
+      const array: Array<GitHubResponseRepositories> = parsed.data.repositoryOwner.repositories.nodes;
 
-      console.log(array)
+      // Construct return array
+      const filteredArray =  array.map((entry) => {
+        return {
+          name: entry.name,
+          description: entry.description,
+          url: entry.url,
+        };
+      });
+      
+      resolve(filteredArray)
     };
 
     fetchGitHub();
