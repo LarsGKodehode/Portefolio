@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { RepositoryDetails } from "../../utilities/getRepositoryData/getRepositoryData";
 
 
+
+
 /**
  * Styled container for repository cards
  */
@@ -15,15 +17,29 @@ const StyledContainer = styled.li`
   padding: .5rem;
   list-style: none;
   margin: 1rem .5rem;
-  tabindex: 0;
   display: grid;
-  grid-template-areas:
-    "title link"
-    "description picture";
+
+  @media only screen and (max-width: 768px) {
+    grid-template-areas:
+      "title"
+      "link"
+      "picture"
+      "description";
+  };
+
+  @media only screen and (min-width: 768px) {
+    grid-template-areas:
+      "title link"
+      "description picture";
+  };
+
+  &:hover {
+    filter: drop-shadow(0px 0px 4px yellow);
+  }
 `;
 
 /**
- * Styled paragraph
+ * Styled title
  */
 const StyledTitle = styled.h3<{gridArea?: string}>`
   ${props => props.gridArea ? "grid-area: " + props.gridArea + ";" : ""}
@@ -41,6 +57,7 @@ const StyledParagraph = styled.p<{gridArea?: string}>`
  */
  const StyledLink = styled.a<{gridArea?: string}>`
  color: white;
+ place-self: end;
  ${props => props.gridArea ? "grid-area: " + props.gridArea + ";" : ""}
 `;
 
@@ -76,26 +93,3 @@ const CardRepository = (props: RepositoryDetails): JSX.Element => {
 };
 
 export default CardRepository;
-
-/* Cut parts
-{
-  const languages = project.languageInfo.map((language) => {
-    const style: CSSProperties = {
-      backgroundColor: language.color,
-    };
-    return(
-      <ol style={style}>
-        <li>{language.language}</li>
-        <li>{language.ratio}</li>
-      </ol>
-    )
-  });
-  return(
-    <a href={project.url} target="_blank">
-      <h3>{project.name}</h3>
-      <p>{project.description}</p>
-      {React.Children.toArray(languages)}
-    </a>
-  );
-}
- */
