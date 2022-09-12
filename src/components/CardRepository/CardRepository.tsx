@@ -18,6 +18,7 @@ const StyledContainer = styled.li`
   list-style: none;
   margin: 1rem .5rem;
   display: grid;
+  box-shadow: 2px 2px 4px black; 
 
   @media only screen and (max-width: 768px) {
     grid-template-areas:
