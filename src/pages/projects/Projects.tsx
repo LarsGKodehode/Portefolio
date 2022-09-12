@@ -1,6 +1,6 @@
 // Libraries
 import React, { useEffect, useState } from "react";
-// import getRepositoryData, { RepositoryDetails } from "../../utilities/getRepositoryData/getRepositoryData";
+import getRepositoryData from "../../utilities/getRepositoryData/getRepositoryData";
 
 // Types
 import { RepositoryDetails } from '../../utilities/getRepositoryData/getRepositoryData';
@@ -18,8 +18,7 @@ function Projects() {
    */
   useEffect(() => {
     const fetchGitHubData = async () => {
-      // const dataGitHub = await getRepositoryData("LarsGKodehode");
-      // setProjects(dataGitHub);
+      getRepositoryData("LarsGKodehode");
     };
 
     fetchGitHubData();

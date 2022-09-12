@@ -14,12 +14,6 @@
 // GitHub access token
 //  - This token is scoped to read only, currently storing it inside the .env,
 //    without too much worry
-const ENV_GITHUB_ACESS_TOKEN = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
-
-
-// Libraries
-import { graphql } from '@octokit/graphql';
-
 
 // Constants
 /**
@@ -37,26 +31,48 @@ export interface RepositoryDetails {
   url: string,
 };
 
+/**
+ * Github repository response
+ */
+interface GitHubResponseRepositories {
+  id: string,
+  name: string,
+  description: string,
+  updatedAt: string,
+  url: string,
+};
+
+/**
+ * Response shape from GitHub, this is based on shape of query
+ */
+ interface GitHubResponse {
+  repositoryOwner: {
+    name: string,
+    bio: string,
+    repositories: {
+      totalCount: number,
+      nodes: Array<GitHubResponseRepositories>,
+    }
+  }
+};
 
 /**
  * Fetches all the repository details associated with given account
  * @param profileName Case sensetive name of GitHub profile
  * @return A promise resolving to a array of all repositories with details
  */
-const getRepositoryData = (profileName: string) => {
-  // Create new Promise for early returning
-  const promise = new Promise<Array<RepositoryDetails>>((resolve, reject) => {
-    async () => {
-      console.log("starting fetch");
-
-      // Get GitHub data
-      const response = await graphql(`
-        query($number_of_repos:Int!) {
-          repositoryOwner(login: "LarsGKodehode") {
+const getRepositoryData = async (profileName: string) => {
+  // Returned promise
+   const promise = new Promise<Array<RepositoryDetails>>((resolve, reject) => {
+    async function fetchGitHub() {
+      // Setup query
+      const query = `
+        query($profile_name: String!, $number_of_repos: Int!) {
+          repositoryOwner(login: $profile_name) {
             ... on User {
               name
               bio
-              repositories(last: 32) {
+              repositories(last: $number_of_repos) {
                 totalCount
                 nodes {
                   id
@@ -69,21 +85,41 @@ const getRepositoryData = (profileName: string) => {
             }
           }
         }
-      `,
-      {
-        headers: {
-          authorization: `	Bearer ${ENV_GITHUB_ACESS_TOKEN}`,
-        },
-        baseUrl: apiEndpoint,
-      }
-      );
-    
-      console.log("fetch success");
-      console.dir(response);
-    };
-  });
+      `;
+  
+      // Setup headers
+      const headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${import.meta.env.VITE_GITHUB_ACCESS_TOKEN}`
+      };
+  
+      // Make request
+      const response = await fetch(apiEndpoint, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({
+          query: query,
+          variables: {
+            profile_name: profileName,
+            number_of_repos: 32
+          }
+        })
+      });
+  
+      // Parse response
+      const parsed: {data: GitHubResponse} = await response.json();
 
-  return promise;
+      // Destructure parts
+      const array = parsed.data.repositoryOwner.repositories.nodes;
+
+      console.log(array)
+    };
+
+    fetchGitHub();
+   });
+  
+   return promise;
 };
 
 export default getRepositoryData;
