@@ -14,11 +14,14 @@ function Projects() {
   const [ projects, setProjects ] = useState<Array<RepositoryDetails>>([]);
 
   /**
-   * Initial fetching of projects
+   * Initial fetching of projects details
    */
   useEffect(() => {
     const fetchGitHubData = async () => {
-      getRepositoryData("LarsGKodehode");
+      const initialData = await getRepositoryData("LarsGKodehode");
+      if(initialData) {
+        setProjects(initialData);
+      };
     };
 
     fetchGitHubData();

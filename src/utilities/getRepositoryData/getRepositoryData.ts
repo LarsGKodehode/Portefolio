@@ -29,17 +29,19 @@ export interface RepositoryDetails {
   name: string,
   description: string,
   url: string,
+  card: string;
 };
 
 /**
  * Github repository response
  */
 interface GitHubResponseRepositories {
-  id: string,
-  name: string,
-  description: string,
-  updatedAt: string,
-  url: string,
+  id: string,                   // Repository ID
+  name: string,                 // Repository name
+  description: string,          // Repository description
+  updatedAt: string,            // Repository updated at
+  url: string,                  // Repository Url
+  openGraphImageUrl: string,    // Repository card image url
 };
 
 /**
@@ -80,6 +82,7 @@ const getRepositoryData = async (profileName: string): Promise<Array<RepositoryD
                   description
                   updatedAt
                   url
+                  openGraphImageUrl
                 }
               }
             }
@@ -125,6 +128,7 @@ const getRepositoryData = async (profileName: string): Promise<Array<RepositoryD
           name: entry.name,
           description: entry.description,
           url: entry.url,
+          card: entry.openGraphImageUrl,
         };
       });
       
