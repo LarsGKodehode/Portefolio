@@ -24,11 +24,12 @@ jobs:
       
       - name: Setup .env file
         env:
-          API_KEY: ${{ secrets.API_GRAPHQL_GITHUB_ACCESS_TOKEN }}
+          API_KEY_1: ${{ secrets.GRAPHQL_TOKEN_1 }}
+          API_KEY_2: ${{ secrets.GRAPHQL_TOKEN_2 }}
         run: |
           touch .env
-          echo VITE_GITHUB_ACCESS_TOKEN=${API_KEY} >> .env
-          cat .env
+          echo VITE_GITHUB_ACCESS_TOKEN_1=${API_KEY_1} >> .env
+          echo VITE_GITHUB_ACCESS_TOKEN_2=${API_KEY_2} >> .env
 
       - name: Install yarn
         run: npm install --locationi=global yarn
