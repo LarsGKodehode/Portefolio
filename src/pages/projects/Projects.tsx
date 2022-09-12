@@ -1,6 +1,7 @@
 // Libraries
 import React, { useEffect, useState } from "react";
 import { CSSProperties } from "styled-components";
+import CardRepository from "../../components/CardRepository/CardRepository";
 import getRepositoryData from "../../utilities/getRepositoryData/getRepositoryData";
 
 // Types
@@ -31,25 +32,10 @@ function Projects() {
 
   // Construct JSX elements from project details
   const projectsElements = projects.map((project) => {
-    const languages = project.languageInfo.map((language) => {
-      const style: CSSProperties = {
-        backgroundColor: language.color,
-      };
-      return(
-        <ol style={style}>
-          <li>{language.language}</li>
-          <li>{language.ratio}</li>
-        </ol>
-      )
-    });
     return(
-      <a href={project.url} target="_blank">
-        <h3>{project.name}</h3>
-        <p>{project.description}</p>
-        {React.Children.toArray(languages)}
-      </a>
-    );
-  });
+      <CardRepository {...project}/>
+      );
+    });
 
   
   return(
