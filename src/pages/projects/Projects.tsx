@@ -18,6 +18,7 @@ function Projects() {
    */
   useEffect(() => {
     const fetchGitHubData = async () => {
+      console.log(`DEBUG:\t Fetching from GitHub.`)
       const initialData = await getRepositoryData("LarsGKodehode");
       if(initialData) {
         setProjects(initialData);
@@ -30,10 +31,11 @@ function Projects() {
   // Construct JSX elements from project details
   const projectsElements = projects.map((project) => {
     return(
-      <li>
-        <h3>Project Name</h3>
-        <p>Project description</p>
-      </li>
+      <a href={project.url}>
+        <h3>{project.name}</h3>
+        <p>{project.description}</p>
+        <img loading="lazy" src={project.card} alt="" />
+      </a>
     );
   });
 
@@ -41,7 +43,9 @@ function Projects() {
   return(
     <div>
       <h1>Projects Page</h1>
-      {React.Children.toArray(projectsElements)}
+      <ul>
+        {React.Children.toArray(projectsElements)}
+      </ul>
     </div>
   );
 };
