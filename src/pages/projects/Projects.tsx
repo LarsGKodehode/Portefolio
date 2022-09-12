@@ -42,7 +42,9 @@ function Projects() {
     <div>
       <h1>Projects Page</h1>
       <ul>
-        {React.Children.toArray(projectsElements)}
+        {projectsElements.length > 0 ? React.Children.toArray(projectsElements):
+        <li>Fetching Data..</li>
+        }
       </ul>
     </div>
   );
