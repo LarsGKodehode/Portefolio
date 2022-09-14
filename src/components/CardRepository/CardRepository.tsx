@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // Types
 import { RepositoryDetails } from "../../utilities/getRepositoryData/getRepositoryData";
+import LanguageStatistics from "../LanguageStatistics/LanguageStatistics";
 
 
 
@@ -23,15 +24,17 @@ const StyledContainer = styled.li`
   @media only screen and (max-width: 768px) {
     grid-template-areas:
       "title"
+      "description"
       "link"
       "picture"
-      "description";
+      "badges";
   };
 
   @media only screen and (min-width: 768px) {
     grid-template-areas:
       "title link"
       "description picture";
+      "badges picture";
   };
 
   &:hover {
@@ -66,7 +69,8 @@ const StyledParagraph = styled.p<{gridArea?: string}>`
  * Picture placeholder
  */
 const PicturePlaceholder = styled.div<{gridArea?: string}>`
-  background-color: white;
+  background-color: #999999;
+  border-radius: 10px;
   place-self: end;
   min-width: 200px;
   max-width: 200px;
@@ -80,13 +84,17 @@ const PicturePlaceholder = styled.div<{gridArea?: string}>`
  * Card for displaying repository details
  */
 const CardRepository = (props: RepositoryDetails): JSX.Element => {
-  const { name, description, url } = props;
-  const languages = props.languageInfo[0];
+  const { name, description, url, languageInfo } = props;
+  // Filter out empty fields
+  const languageDetails = languageInfo.filter((entry)=> {
+    return entry.language && entry.ratio && entry.color;
+  });
 
   return(
     <StyledContainer>
       <StyledTitle {...{gridArea: "title"}}>{name}</StyledTitle>
       <StyledParagraph {...{gridArea: "description"}}>{description}</StyledParagraph>
+      {languageDetails.length > 0 ? <LanguageStatistics {...{languageDetails}}/> : ""}
       <StyledLink href={url} target="_blank" {...{gridArea: "link"}}>GitHub</StyledLink>
       <PicturePlaceholder {...{gridArea: "picture"}}/>
     </StyledContainer>

@@ -18,19 +18,28 @@ import { ColorHEX } from "../../@types/types";
 
 // Constants
 /**
- * Enpoint for GitHub GraphQL
+ * Endpoint for GitHub GraphQL
  */
 const apiEndpoint = "https://api.github.com/graphql";
 
 
-// Types
-type ProgrammingLanguage = "HTML" | "CSS" | "JavaScript" | "TypeScript" | "Go" | string;
+/**
+ * All programming languages we have accountetd for
+ */
+export type ProgrammingLanguage = 
+  | "HTML"
+  | "CSS"
+  | "JavaScript"
+  | "TypeScript"
+  | "Go"
+  | "Docker"
+  | string;
 
 
 /**
  * Language info
  */
-type LanguagesInfo = Array<{language: ProgrammingLanguage, ratio: number, color: ColorHEX}>;
+export type LanguagesInfo = Array<{language: ProgrammingLanguage, ratio: number, color: ColorHEX}>;
 
 /**
  * Structure of RepositoryDetails
@@ -48,7 +57,7 @@ export interface RepositoryDetails {
 /**
  * Github response, repository part
  */
-interface GitHubResponseRepositories {
+export interface GitHubResponseRepositories {
   id: string,                   // Repository ID
   name: string,                 // Repository name
   description: string,          // Repository description
@@ -63,7 +72,7 @@ interface GitHubResponseRepositories {
 /**
  * Response shape from GitHub, this is based on shape of query
  */
- interface GitHubResponse {
+ export interface GitHubResponse {
   repositoryOwner: {
     name: string,
     bio: string,
