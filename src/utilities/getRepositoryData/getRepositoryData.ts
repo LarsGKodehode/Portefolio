@@ -11,16 +11,35 @@
 //
 // - All logic and variables should be inside here
 
-// GitHub access token
-//  - This token is scoped to read only, currently storing it inside the .env,
-//    without too much worry
+
+// Types
+import { ColorHEX } from "../../@types/types";
+
 
 // Constants
 /**
- * Enpoint for GitHub GraphQL
+ * Endpoint for GitHub GraphQL
  */
 const apiEndpoint = "https://api.github.com/graphql";
 
+
+/**
+ * All programming languages we have accountetd for
+ */
+export type ProgrammingLanguage = 
+  | "HTML"
+  | "CSS"
+  | "JavaScript"
+  | "TypeScript"
+  | "Go"
+  | "Docker"
+  | string;
+
+
+/**
+ * Language info
+ */
+export type LanguagesInfo = Array<{language: ProgrammingLanguage, ratio: number, color: ColorHEX}>;
 
 /**
  * Structure of RepositoryDetails
@@ -29,25 +48,31 @@ export interface RepositoryDetails {
   name: string,
   description: string,
   url: string,
-  card: string;
+  /**
+   * A list of the 5 most used languages in repository
+   */ 
+  languageInfo: LanguagesInfo,
 };
 
 /**
- * Github repository response
+ * Github response, repository part
  */
-interface GitHubResponseRepositories {
+export interface GitHubResponseRepositories {
   id: string,                   // Repository ID
   name: string,                 // Repository name
   description: string,          // Repository description
   updatedAt: string,            // Repository updated at
   url: string,                  // Repository Url
-  openGraphImageUrl: string,    // Repository card image url
+  languages: {                  // Repository language info
+    totalSize: number,
+    edges: Array<{size: number, node: {name: ProgrammingLanguage, color: ColorHEX}}>
+  }
 };
 
 /**
  * Response shape from GitHub, this is based on shape of query
  */
- interface GitHubResponse {
+ export interface GitHubResponse {
   repositoryOwner: {
     name: string,
     bio: string,
@@ -71,7 +96,7 @@ const getRepositoryData = async (profileName: string): Promise<Array<RepositoryD
       const sec = import.meta.env.VITE_GITHUB_ACCESS_TOKEN_1;
       const ret = import.meta.env.VITE_GITHUB_ACCESS_TOKEN_2;
       // Only for avoiding GitHub auto dropping of exposed keys
-      // Token scoped to readonly and there is no billing info attached to it
+      // Token is scoped to readonly and there is no billing info attached to it
       function getToken() {
         return sec + ret;
       };
@@ -91,7 +116,16 @@ const getRepositoryData = async (profileName: string): Promise<Array<RepositoryD
                   description
                   updatedAt
                   url
-                  openGraphImageUrl
+                  languages(first: 5) {
+                    totalSize
+                    edges {
+                      size
+                      node {
+                        name
+                        color
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -131,19 +165,33 @@ const getRepositoryData = async (profileName: string): Promise<Array<RepositoryD
       const parsed: {data: GitHubResponse} = await response.json();
 
       // Get repository details
-      const array: Array<GitHubResponseRepositories> = parsed.data.repositoryOwner.repositories.nodes;
+      const repositoriesArray: Array<GitHubResponseRepositories> = parsed.data.repositoryOwner.repositories.nodes;
 
       // Construct return array
-      const filteredArray =  array.map((entry) => {
+      const filteredArray =  repositoriesArray.map((entry) => {
+        // Get total size of language files
+        const totalSize = entry.languages.totalSize;
+
+        // Massage language info
+        const languages = entry.languages.edges.map((language) => {
+          const size = language.size;
+          const { name, color} = language.node;
+          return {
+            language: name,
+            color: color,
+            ratio: size / totalSize,
+          };
+        });
+
         return {
           name: entry.name,
           description: entry.description,
           url: entry.url,
-          card: entry.openGraphImageUrl,
+          languageInfo: languages,
         };
       });
       
-      resolve(filteredArray)
+      resolve(filteredArray);
     };
 
     fetchGitHub();

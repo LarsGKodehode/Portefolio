@@ -1,5 +1,7 @@
 // Libraries
 import React, { useEffect, useState } from "react";
+import { CSSProperties } from "styled-components";
+import CardRepository from "../../components/CardRepository/CardRepository";
 import getRepositoryData from "../../utilities/getRepositoryData/getRepositoryData";
 
 // Types
@@ -31,20 +33,18 @@ function Projects() {
   // Construct JSX elements from project details
   const projectsElements = projects.map((project) => {
     return(
-      <a href={project.url}>
-        <h3>{project.name}</h3>
-        <p>{project.description}</p>
-        <img loading="lazy" src={project.card} alt="" />
-      </a>
-    );
-  });
+      <CardRepository {...project}/>
+      );
+    });
 
   
   return(
     <div>
       <h1>Projects Page</h1>
       <ul>
-        {React.Children.toArray(projectsElements)}
+        {projectsElements.length > 0 ? React.Children.toArray(projectsElements):
+        <li>Fetching Data..</li>
+        }
       </ul>
     </div>
   );
